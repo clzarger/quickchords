@@ -505,7 +505,7 @@ window.phone = function () {
   var pptx1 = new PptxGenJS();
   var slide = pptx1.addNewSlide();
   slide.addText('Hello World!', { x:1.5, y:1.5, font_size:18, color:'363636' });
-  pptx.save('Sample Presentation');
+  pptx1.save('Sample Presentation');
 
   console.log(28);
 };

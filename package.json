@@ -12,11 +12,12 @@
     "pptxgenjs": "^1.10.0"
   },
   "devDependencies": {
-    "babelify": "^7.3.0",
-    "browserify": "^13.1.0",
     "babel-preset-angular": "^6.0.15",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
+    "blob-stream": "^0.1.3",
+    "browserify": "^13.1.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-sequence": "^0.4.6",

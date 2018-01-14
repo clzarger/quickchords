@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111458542-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-111458542-1');
+  </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>QuickChords</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.png" />
+
+    <!---Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBXxrejMJpbNjql5oLCyEdXCiXZRZTbVFM",
+        authDomain: "quick-chords.firebaseapp.com",
+        databaseURL: "https://quick-chords.firebaseio.com",
+        projectId: "quick-chords",
+        storageBucket: "",
+        messagingSenderId: "784048815997"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <!---CDN Links-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<!---HEADER-->
+<body>
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <img src="logo.png">
+      </div>
+    </div>
+  </div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm" style="background-color:#323232; padding-top: 8px; height: 40px;">
+      <a href="./" style="color:#aaaaaa">Home</a>
+    </div>
+    <div class="col-sm" style="background-color:#323232; padding-top: 8px; height: 40px;">
+      <a href="./about.html">About</a>
+    </div>
+    <div class="col-sm" style="background-color:#323232; padding-top: 8px; height: 40px;">
+      <a href="./works.html">How it works</a>
+    </div>
+    <div class="col-sm" style="background-color:#323232; padding-top: 8px; height: 40px;">
+      <a href="./donate.html">Donate</a>
+    </div>
+  </div>
+
+
+<br>
+
+  <p class="header">Quick Chords</p>
+    <p>Make slideshow presentations from guitar tabs.</p>
+    <p>Reformat guitar tabs for printing & easier usage.</p>
+<br>
+<!-- Your one-stop shop for preparing to lead music.
+Make slideshow presentations instantly.
+Reformat guitar tabs/chords for optimal printing. -->
+  <!---<a href="./secondPage.html">Click me!</a>--->
+
+    <!---STEP 1-->
+<p class="header">
+  Copy & Paste <a href="https://www.ultimate-guitar.com/"; target="_blank"; style="color:#4283ed"> tabs</a> below</p>
+<p> (Copy all text. Lyrics, Chorus, and Verse headers included.)</p>
+  <!---STEP 2-->
+<div class="row">
+  <div class="col-sm">
+  	<button type="button" onclick="document.getElementById('form1').style.display='block'">Insert 1st Song</button>
+    <button type="button" onclick="document.getElementById('form1').style.display='none'">Remove 1st Song</button>
+  		<form id="form1" style="display:none">
+	  		<p>Title (Song 1):<input class="name" type="text" id="name1"></p>
+	  		<p>Tabs (Song 1):<textarea class="format" id="chords1" name="comments" cols="30" rows="12"></textarea>
+ 		  </form>
+  </div>
+  <div class="col-sm">
+  	<button type="button" onclick="document.getElementById('form2').style.display='block'">Insert 2nd Song</button>
+    <button type="button" onclick="document.getElementById('form2').style.display='none'">Remove 2nd Song</button>
+      <form id="form2" style="display:none">
+        <p>Title (Song 2):<input class="name" type="text" id="name2"></p>
+        <p>Tabs (Song 2):<textarea class="format" id="chords2" name="comments" cols="30" rows="12"></textarea></p>
+    </form>
+  </div>
+  <div class="col-sm">
+    <button type="button" onclick="document.getElementById('form3').style.display='block'">Insert 3rd Song</button>
+    <button type="button" onclick="document.getElementById('form3').style.display='none'">Remove 3rd Song</button>
+      <form id="form3" style="display:none">
+        <p>Title (Song 3):<input class="name" type="text" id="name3">
+        <p>Tabs (Song 3):<textarea class="format" id="chords3" name="comments" cols="30" rows="12"></textarea>
+      </form>
+  </div>
+</div>
+<br>
+<br>
+    <!---Download-->
+<div>
+  <p class="header">Download</p>
+</div>
+
+<div class="row">
+  <div class="col-sm">
+    <form>
+      <input type="button" value="Chords" onclick="chords()"></input>
+    </form>
+  </div>
+  <div class="col-sm">
+    <form>
+      <input type="button" value="Slides" onclick="slides()"></input>
+    </form>
+  </div>
+  <div class="col-sm">
+    <form>
+      <input type="button" value="New" onclick="phone()"></input>
+    </form>
+  </div>
+  <div class="col-sm-9">
+    <p></p>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+
+</div>
+
+<!--Boodstrap CDN -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./bundle.js"></script>
+<!-- <script lang="javascript" src="PptxGenJS/dist/pptxgen.bundle.js"></script>
+<script lang="javascript" src="PptxGenJS/libs/jquery.min.js"></script>
+<script lang="javascript" src="PptxGenJS/libs/jszip.min.js"></script>
+<script lang="javascript" src="PptxGenJS/dist/pptxgen.js"></script> -->
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "chords",
+  "description": "chords",
+  "main": "server.js",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=7.0.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "pdfkit": "^0.8.3",
+    "pptxgenjs": "^1.10.0"
+  },
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "babel-preset-angular": "^6.0.15",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-sequence": "^0.4.6",
+    "gulp-sourcemaps": "^1.12.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  }
+}

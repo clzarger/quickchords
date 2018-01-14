@@ -502,8 +502,7 @@ window.slides = function () {
 
 
 window.phone = function () {
-  var pptx = require('pptxgenjs');
-  var pptx1 = new pptx.constructor();
+  var pptx1 = new PptxGenJS();
   var slide = pptx1.addNewSlide();
   slide.addText('Hello World!', { x:1.5, y:1.5, font_size:18, color:'363636' });
   pptx.save('Sample Presentation');

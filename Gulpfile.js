@@ -25,12 +25,13 @@ gulp.task('bundle', () =>
 gulp.task('copyStatic', () => {
 	gulp.src([
 		'./src/index.html',
-    './src/about.html',
+        './src/about.html',
 		'./src/works.html',
 		'./src/donate.html',
-    './src/css/styles.css',
+        './src/css/styles.css',
 		'./src/favicon.png',
 		'./src/logo.png',
+        './node_modules/pptxgenjs/dist/pptxgen.bundle.js'
 	]).pipe(gulp.dest('./dist'));
 });
 

@@ -25,13 +25,19 @@ gulp.task('bundle', () =>
 gulp.task('copyStatic', () => {
 	gulp.src([
 		'./src/index.html',
-        './src/about.html',
+    './src/about.html',
 		'./src/works.html',
 		'./src/donate.html',
-        './src/css/styles.css',
+    './src/css/styles.css',
 		'./src/favicon.png',
 		'./src/logo.png',
-        './node_modules/pptxgenjs/dist/pptxgen.bundle.js'
+		'./src/copy.png',
+		'./src/paste.png',
+		'./src/play.png',
+		'./src/logoQ.png',
+		'./src/logolong.png',
+    './node_modules/pptxgenjs/dist/pptxgen.bundle.js',
+		'./node_modules/express/lib/express.js'
 	]).pipe(gulp.dest('./dist'));
 });
 

@@ -44,18 +44,13 @@
 
 </head>
 
-<!---HEADER-->
 <body>
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <img src="logo.png">
-      </div>
-    </div>
-  </div> -->
-
+  <!---NAVBAR-->
 <div class="container">
   <div class="row">
+    <div class="col-sm" style="background-color:#323232; padding-top: 4px; padding-bottom: 4px; height: 40px;">
+      <img class="mx-auto" src="favicon.png" alt="Copy image">
+    </div>
     <div class="col-sm" style="background-color:#323232; padding-top: 8px; height: 40px;">
       <a href="./" style="color:#aaaaaa">Home</a>
     </div>
@@ -70,52 +65,78 @@
     </div>
   </div>
 
-
+  <!---INSTRUCTIONS-->
+  <br>
+  <div class="row">
+    <div class="col-sm">
+      <div class="card border-dark bg-transparent mb-3" style="width: 50" class="mx-auto">
+        <img class="mx-auto" src="copy.png" alt="Copy image">
+        <div class="card-body">
+          <h2 class="card-title">Copy.</h2>
+          <p class="card-text">Copy your song's lyrics. Ultimate Guitar is a great website to use. Include lyric headers & guitar chords.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card border-dark bg-transparent mb-3" style="width: 50" class="mx-auto">
+        <img class="mx-auto" src="paste.png" alt="Paste image">
+        <div class="card-body">
+          <h2 class="card-title">Paste.</h2>
+          <p class="card-text">Paste each song below in the reformater.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card border-dark bg-transparent mb-3" style="width: 50" class="mx-auto">
+      <img class="mx-auto" src="play.png" alt="Play image">
+        <div class="card-body">
+          <h2 class="card-title">Play.</h2>
+          <p class="card-text">Enjoy three ways to modify your input.<p>
+        </div>
+      </div>
+    </div>
+  </div>
 <br>
 
-  <p class="header">Quick Chords</p>
-    <p>Make slideshow presentations from guitar tabs.</p>
-    <p>Reformat guitar tabs for printing & easier usage.</p>
-<br>
-<!-- Your one-stop shop for preparing to lead music.
-Make slideshow presentations instantly.
-Reformat guitar tabs/chords for optimal printing. -->
-  <!---<a href="./secondPage.html">Click me!</a>--->
-
-    <!---STEP 1-->
-<p class="header">
-  Copy & Paste <a href="https://www.ultimate-guitar.com/"; target="_blank"; style="color:#4283ed"> tabs</a> below</p>
-<p> (Copy all text. Lyrics, Chorus, and Verse headers included.)</p>
-  <!---STEP 2-->
+  <!---FORMS-->
 <div class="row">
   <div class="col-sm">
-  	<button type="button" onclick="document.getElementById('form1').style.display='block'">Insert 1st Song</button>
-    <button type="button" onclick="document.getElementById('form1').style.display='none'">Remove 1st Song</button>
-  		<form id="form1" style="display:none">
-	  		<p>Title (Song 1):<input class="name" type="text" id="name1"></p>
-	  		<p>Tabs (Song 1):<textarea class="format" id="chords1" name="comments" cols="30" rows="12"></textarea>
- 		  </form>
+    <a class="btn btn-primary" data-toggle="collapse" href="#form1" role="button" aria-expanded="true" aria-controls="multiCollapseExample1">Toggle 1st Song</a>
+      <div class="collapse show" id="form1">
+        <form style="display:block">
+          <div class="card card-body">
+    	  		<p>Title:<input class="name" type="text" id="name1" placeholder="Song Title"></p>
+    	  		<p>Tabs:<textarea class="format" id="chords1" name="comments" cols="30" rows="8" placeholder="Song Tabs"></textarea>
+          </div>
+        </form>
+      </div>
   </div>
   <div class="col-sm">
-  	<button type="button" onclick="document.getElementById('form2').style.display='block'">Insert 2nd Song</button>
-    <button type="button" onclick="document.getElementById('form2').style.display='none'">Remove 2nd Song</button>
-      <form id="form2" style="display:none">
-        <p>Title (Song 2):<input class="name" type="text" id="name2"></p>
-        <p>Tabs (Song 2):<textarea class="format" id="chords2" name="comments" cols="30" rows="12"></textarea></p>
-    </form>
+    <a class="btn btn-primary" data-toggle="collapse" href="#form2" role="button" aria-expanded="true" aria-controls="multiCollapseExample1">Toggle 2nd Song</a>
+      <div class="collapse show" id="form2">
+        <form style="display:block">
+          <div class="card card-body">
+    	  		<p>Title:<input class="name" type="text" id="name2" placeholder="Song Title"></p>
+    	  		<p>Tabs:<textarea class="format" id="chords2" name="comments" cols="30" rows="8"placeholder="Song Tabs"></textarea>
+          </div>
+        </form>
+      </div>
   </div>
   <div class="col-sm">
-    <button type="button" onclick="document.getElementById('form3').style.display='block'">Insert 3rd Song</button>
-    <button type="button" onclick="document.getElementById('form3').style.display='none'">Remove 3rd Song</button>
-      <form id="form3" style="display:none">
-        <p>Title (Song 3):<input class="name" type="text" id="name3">
-        <p>Tabs (Song 3):<textarea class="format" id="chords3" name="comments" cols="30" rows="12"></textarea>
-      </form>
+    <a class="btn btn-primary" data-toggle="collapse" href="#form3" role="button" aria-expanded="true" aria-controls="multiCollapseExample1">Toggle 3rd Song</a>
+      <div class="collapse show" id="form3">
+        <form style="display:block">
+          <div class="card card-body">
+    	  		<p>Title:<input class="name" type="text" id="name3" placeholder="Song Title"></p>
+    	  		<p>Tabs:<textarea class="format" id="chords3" name="comments" cols="30" rows="8" placeholder="Song Tabs"></textarea>
+          </div>
+        </form>
+      </div>
   </div>
 </div>
 <br>
-<br>
-    <!---Download-->
+
+    <!---DOWNLOAD-->
 <div>
   <p class="header">Download</p>
 </div>
@@ -123,20 +144,20 @@ Reformat guitar tabs/chords for optimal printing. -->
 <div class="row">
   <div class="col-sm">
     <form>
-      <input type="button" value="Chords" onclick="chords()"></input>
+      <button type="button" class="btn btn-primary" onclick="slides()">Lyrics on Slides</button>
     </form>
   </div>
   <div class="col-sm">
     <form>
-      <input type="button" value="Slides" onclick="slides()"></input>
+      <button type="button" class="btn btn-primary" onclick="test()">Lyrics on Paper (to print & handout) (not ready yet)</button>
     </form>
   </div>
   <div class="col-sm">
     <form>
-      <input type="button" value="New" onclick="phone()"></input>
+      <button type="button" class="btn btn-primary" onclick="chords()">Chords on Paper (to print)</button>
     </form>
   </div>
-  <div class="col-sm-9">
+  <div class="col-sm-6">
     <p></p>
   </div>
 </div>
@@ -160,6 +181,40 @@ Reformat guitar tabs/chords for optimal printing. -->
 <script lang="javascript" src="PptxGenJS/libs/jquery.min.js"></script>
 <script lang="javascript" src="PptxGenJS/libs/jszip.min.js"></script>
 <script lang="javascript" src="PptxGenJS/dist/pptxgen.js"></script> -->
+
+
+<!---Ultimate Guitar Window-->
+<!-- <br>
+<div class="row">
+<div class="col-sm">
+  <a class="btn btn-primary" data-toggle="collapse" href="#ug" role="button" aria-expanded="false" aria-controls="multiCollapseUG">Toggle Ultimate Guitar Window</a>
+  <div class="collapse" id="ug">
+    <div class="card" style="width: 1200" class="mx-auto">
+      <div class="card-body">
+        <h2 class="card-title">Copy.</h2>
+        <p class="card-text">Copy all text. Lyrics, Chorus, and Verse headers included. Exclude intros & sections without lyrics.</p>
+        <iframe src="https://www.ultimate-guitar.com/" sandbox="allow-forms allow-scripts" height="500" width="1000"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+</div> -->
+
+<!---Old Header-->
+<!-- <p class="header">Quick Chords</p>
+<p>Make slideshow presentations from guitar tabs.</p>
+<p>Reformat guitar tabs for printing & easier usage.</p> -->
+<!-- Your one-stop shop for preparing to lead music.
+Make slideshow presentations instantly.
+Reformat guitar tabs/chords for optimal printing. -->
+<!---<a href="./secondPage.html">Click me!</a>--->
+
+<!-- <p class="header">
+  Copy & Paste <a href="https://www.ultimate-guitar.com/"; target="_blank"; style="color:#4283ed"> tabs</a> below</p>
+<p> (Copy all text. Lyrics, Chorus, and Verse headers included.)</p> -->
+
+<!-- <p class="header">(Copy all text. Lyrics, Chorus, and Verse headers included.)</p> -->
+
 
 </body>
 </html>

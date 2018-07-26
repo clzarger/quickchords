@@ -148,7 +148,6 @@ window.slides = function () {
   // inputs
     var title1 = document.getElementById("name1").value;
     getSong(title1).then(function(chordsInput1){
-console.log(chordsInput1);
       // var chordsInput1 = document.getElementById("chords1").value;
       var title2 = document.getElementById("name2").value;
       var chordsInput2 = document.getElementById("chords2").value;

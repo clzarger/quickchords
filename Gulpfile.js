@@ -27,15 +27,19 @@ gulp.task('copyStatic', () => {
 		'./src/index.html',
     './src/about.html',
 		'./src/works.html',
-		'./src/donate.html',
+		'./src/give.html',
     './src/css/styles.css',
+			// Images
 		'./src/favicon.png',
-		'./src/logo.png',
+		'./src/logoWithName.png',
 		'./src/copy.png',
 		'./src/paste.png',
 		'./src/play.png',
-		'./src/logoQ.png',
-		'./src/logolong.png',
+		'./src/1.png',
+		'./src/2.png',
+		'./src/3.png',
+		'./src/4.png',
+
     './node_modules/pptxgenjs/dist/pptxgen.bundle.js',
 		'./node_modules/express/lib/express.js'
 	]).pipe(gulp.dest('./dist'));

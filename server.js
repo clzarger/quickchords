@@ -7,8 +7,6 @@ var ugs = require('ultimate-guitar-scraper');
 // port to run the app on
 const port = process.env.PORT || 80;
 
-// create the main instance of the app
-
 // FRONTEND
 app.use('/', express.static('./dist'));
 
@@ -23,6 +21,7 @@ console.log('Server is running on port ' + port);
 router.get('/song', function(req, res) {
 
 var name = req.query.name;
+var artist = req.query.artist;
 
   var query = {
     query: name,
@@ -33,7 +32,9 @@ var name = req.query.name;
     if (error) {
       console.log(error)
     } else {
-      let tabUrl = tabs[0]['url']
+      let tabFilteredByArtist = tabs.filter(hi => hi.artist === artist);
+      let tabSortedByBest = tabFilteredByArtist.sort((a, b) => (a.rating > b.rating ? 1 : -1));
+      let tabUrl = tabSortedByBest[0]['url']
       ugs.get(tabUrl, function (error, tab) {
         if (error) {
           console.log(error)

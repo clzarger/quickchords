@@ -3,48 +3,13 @@ const PDFDocument = require('pdfkit');
 const blobStream = require('blob-stream');
 const axios = require('axios');
 
-function getSong(songName){
-  return axios.get('/api/song?name=' + songName)
+function getSong(songName, songArtist){
+  return axios.get('/api/song?name=' + songName + '&artist=' + songArtist)
     .then(function(response){
       console.log(response);
       return response.data.content.text;
     });
 }
-//hi
-//TEST
-window.scraper = function () {
-
-  var songSearch = document.getElementById("scraper").value;
-
-};
-//
-// //attempt 1
-//
-//   ugs.search({
-//     query: songSearch,
-//     page: 1,
-//     type: ['Chords']
-//   }, (error, tabs) => {
-//     if (error) {
-//       console.log(error)
-//     } else {
-//       console.log('hi');
-//     };
-//
-//
-//     let tabUrl = tabs[0]['url']
-//     ugs.get(tabUrl, (error, tab) => {
-//       if (error) {
-//         console.log(error)
-//       } else {
-//         console.log(tab.content)
-//       }
-//     })
-//
-//   });
-//
-// };
-
 
 // MUSICIAN CHORDS (PDF) works
 window.chords = function () {
@@ -147,21 +112,27 @@ window.chords = function () {
 window.slides = function () {
   // inputs
     var title1 = document.getElementById("name1").value;
-    getSong(title1).then(function(chordsInput1){
-      // var chordsInput1 = document.getElementById("chords1").value;
-      var title2 = document.getElementById("name2").value;
-      var chordsInput2 = document.getElementById("chords2").value;
-      var title3 = document.getElementById("name3").value;
-      var chordsInput3 = document.getElementById("chords3").value;
-
-    //SONG ONE!!!!!!!!!!!!
-
+    var artist1 = document.getElementById("artist1").value; //added
+    var title2 = document.getElementById("name2").value;
+    var title3 = document.getElementById("name3").value;
+    getSong(title1, artist1).then(function(chordsInput1){
       //remove chords
-        var chordsInput1_v2 = chordsInput1.replace(/\b([CDEFGAB](?:b|bb)*(?:#|##|sus|maj|min|aug|m|add)*[\d\/]*(?:[CDEFGAB](?:b|bb)*(?:#|##|sus|maj|min|aug|m|add)*[\d\/]*)*)(?=\s|$)(?!\w)/gm, "");
-      //remove blank lines where chords used to be
-        var chordsInput1_v3 = chordsInput1_v2.replace(/^\s*[\r\n]*/gm, "");
+        var chordsInput1_v2 = chordsInput1.replace(/(\[ch\].*\[*c*h*\])/gm, "");
+                    // OLD REGEX: var chordsInput1_v2 = chordsInput1.replace(/\b([CDEFGAB](?:b|bb)*(?:#|##|sus|maj|min|aug|m|add)*[\d\/]*(?:[CDEFGAB](?:b|bb)*(?:#|##|sus|maj|min|aug|m|add)*[\d\/]*)*)(?=\s|$)(?!\w)/gm, "");
+                    // remove blank lines where chords used to be
+                    // var chordsInput1_v3 = chordsInput1_v2.replace(/^\s*[\r\n]*/gm, "");
+      //remove song intro text
+        var chordsInput1_v3 = chordsInput1_v2.replace(/".+[\s\S].+.[\s\S].+.[\s\S].+.[\s\S]/gm, "");
+      //remove end of song " mark
+        var chordsInput1_v3_1 = chordsInput1_v3.replace(/"/gm, "");
+      //remove riff tabs (if present)
+        var chordsInput1_v3_2 = chordsInput1_v3_1.replace(/.\|-.*/gm, "");
+      //remove [solo] & [instrumental]
+        var chordsInput1_v3_3 = chordsInput1_v3_2.replace(/\[Solo\]|\[solo\]|\[Instrumental\]|\[instrumental\]/gm, "");
+      //remove extra spaces & blank lines
+        var chordsInput1_v3_4 = chordsInput1_v3_3.replace(/\r?\n\s*\n/gm, "\r\n");
       //add a marker at the end of the input so the following code can find the last slide
-        var chordsInput1_v4 = chordsInput1_v3 + "[";
+        var chordsInput1_v4 = chordsInput1_v3_4 + "[";
       //find where to split slides
         var slideOneStart1 = chordsInput1_v4.indexOf("[");
         var slideTwoStart1 = chordsInput1_v4.indexOf("[", slideOneStart1 + 1);
@@ -292,287 +263,6 @@ window.slides = function () {
         var slideTen1 = slideTenNeedsTrimmed1.trim();
         var slideEleven1 = slideElevenNeedsTrimmed1.trim();
         var slideTwelve1 = slideTwelveNeedsTrimmed1.trim();
-
-    //SONG TWO!!!!!!!!!!!
-
-    //remove chords
-      var chordsInput2_v2 = chordsInput2.replace(/\b([CDEFGAB](?:b|bb)*(?:#|##|sus|maj|min|aug|m|add)*[\d\/]*(?:[CDEFGAB](?:b|bb)*(?:#|##|sus|maj|min|aug|m|add)*[\d\/]*)*)(?=\s|$)(?!\w)/gm, "");
-    //remove blank lines where chords used to be
-      var chordsInput2_v3 = chordsInput2_v2.replace(/^\s*[\r\n]*/gm, "");
-    //add a marker at the end of the input so the following code can find the last slide
-      var chordsInput2_v4 = chordsInput2_v3 + "[";
-    //find where to split slides
-      var slideOneStart2 = chordsInput2_v4.indexOf("[");
-      var slideTwoStart2 = chordsInput2_v4.indexOf("[", slideOneStart2 + 1);
-      var slideThreeStart2 = chordsInput2_v4.indexOf("[", slideTwoStart2 + 1);
-      var slideFourStart2 = chordsInput2_v4.indexOf("[", slideThreeStart2 + 1);
-      var slideFiveStart2 = chordsInput2_v4.indexOf("[", slideFourStart2 + 1);
-      var slideSixStart2 = chordsInput2_v4.indexOf("[", slideFiveStart2 + 1);
-      var slideSevenStart2 = chordsInput2_v4.indexOf("[", slideSixStart2 + 1);
-      var slideEightStart2 = chordsInput2_v4.indexOf("[", slideSevenStart2 + 1);
-      var slideNineStart2 = chordsInput2_v4.indexOf("[", slideEightStart2 + 1);
-      var slideTenStart2 = chordsInput2_v4.indexOf("[", slideNineStart2 + 1);
-      var slideElevenStart2 = chordsInput2_v4.indexOf("[", slideTenStart2 + 1);
-      var slideTwelveStart2 = chordsInput2_v4.indexOf("[", slideElevenStart2 + 1);
-      var slideThirteenStart2 = chordsInput2_v4.indexOf("[", slideTwelveStart2 + 1);
-    //prevent error where it prints duplicate slides
-       if (slideThreeStart2<0) {
-         slideFourStart2 = -1
-         slideFiveStart2 = -1
-         slideSixStart2 = -1
-         slideSevenStart2 = -1
-         slideEightStart2 = -1
-         slideNineStart2 = -1
-         slideTenStart2 = -1
-         slideElevenStart2 = -1
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideFourStart2<0) {
-         slideFiveStart2 = -1
-         slideSixStart2 = -1
-         slideSevenStart2 = -1
-         slideEightStart2 = -1
-         slideNineStart2 = -1
-         slideTenStart2 = -1
-         slideElevenStart2 = -1
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideFiveStart2<0) {
-         slideSixStart2 = -1
-         slideSevenStart2 = -1
-         slideEightStart2 = -1
-         slideNineStart2 = -1
-         slideTenStart2 = -1
-         slideElevenStart2 = -1
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideSixStart2<0) {
-         slideSevenStart2 = -1
-         slideEightStart2 = -1
-         slideNineStart2 = -1
-         slideTenStart2 = -1
-         slideElevenStart2 = -1
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideSevenStart2<0) {
-         slideEightStart2 = -1
-         slideNineStart2 = -1
-         slideTenStart2 = -1
-         slideElevenStart2 = -1
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideEightStart2<0) {
-         slideNineStart2 = -1
-         slideTenStart2 = -1
-         slideElevenStart2 = -1
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideNineStart2<0) {
-         slideTenStart2 = -1
-         slideElevenStart2 = -1
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideTenStart2<0) {
-         slideElevenStart2 = -1
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideElevenStart2<0) {
-         slideTwelveStart2 = -1
-         slideThirteenStart2 = -1
-       }
-       if (slideTwelveStart2<0) {
-         slideThirteenStart2 = -1
-       }
-
-    //split slides
-      var slideOneIsolated2 = chordsInput2_v4.slice(slideOneStart2, slideTwoStart2);
-      var slideTwoIsolated2 = chordsInput2_v4.slice(slideTwoStart2, slideThreeStart2);
-      var slideThreeIsolated2 = chordsInput2_v4.slice(slideThreeStart2, slideFourStart2);
-      var slideFourIsolated2 = chordsInput2_v4.slice(slideFourStart2, slideFiveStart2);
-      var slideFiveIsolated2 = chordsInput2_v4.slice(slideFiveStart2, slideSixStart2);
-      var slideSixIsolated2 = chordsInput2_v4.slice(slideSixStart2, slideSevenStart2);
-      var slideSevenIsolated2 = chordsInput2_v4.slice(slideSevenStart2, slideEightStart2);
-      var slideEightIsolated2 = chordsInput2_v4.slice(slideEightStart2, slideNineStart2);
-      var slideNineIsolated2 = chordsInput2_v4.slice(slideNineStart2, slideTenStart2);
-      var slideTenIsolated2 = chordsInput2_v4.slice(slideTenStart2, slideElevenStart2);
-      var slideElevenIsolated2 = chordsInput2_v4.slice(slideElevenStart2, slideTwelveStart2);
-      var slideTwelveIsolated2 = chordsInput2_v4.slice(slideTwelveStart2, slideThirteenStart2);
-    //remove verse & chorus headers
-      var slideOneNeedsTrimmed2 = slideOneIsolated2.replace(/\[.*\]/g, "");
-      var slideTwoNeedsTrimmed2 = slideTwoIsolated2.replace(/\[.*\]/g, "");
-      var slideThreeNeedsTrimmed2 = slideThreeIsolated2.replace(/\[.*\]/g, "");
-      var slideFourNeedsTrimmed2 = slideFourIsolated2.replace(/\[.*\]/g, "");
-      var slideFiveNeedsTrimmed2 = slideFiveIsolated2.replace(/\[.*\]/g, "");
-      var slideSixNeedsTrimmed2 = slideSixIsolated2.replace(/\[.*\]/g, "");
-      var slideSevenNeedsTrimmed2 = slideSevenIsolated2.replace(/\[.*\]/g, "");
-      var slideEightNeedsTrimmed2 = slideEightIsolated2.replace(/\[.*\]/g, "");
-      var slideNineNeedsTrimmed2 = slideNineIsolated2.replace(/\[.*\]/g, "");
-      var slideTenNeedsTrimmed2 = slideTenIsolated2.replace(/\[.*\]/g, "");
-      var slideElevenNeedsTrimmed2 = slideElevenIsolated2.replace(/\[.*\]/g, "");
-      var slideTwelveNeedsTrimmed2 = slideTwelveIsolated2.replace(/\[.*\]/g, "");
-    //trim white space
-      var slideOne2 = slideOneNeedsTrimmed2.trim();
-      var slideTwo2 = slideTwoNeedsTrimmed2.trim();
-      var slideThree2 = slideThreeNeedsTrimmed2.trim();
-      var slideFour2 = slideFourNeedsTrimmed2.trim();
-      var slideFive2 = slideFiveNeedsTrimmed2.trim();
-      var slideSix2 = slideSixNeedsTrimmed2.trim();
-      var slideSeven2 = slideSevenNeedsTrimmed2.trim();
-      var slideEight2 = slideEightNeedsTrimmed2.trim();
-      var slideNine2 = slideNineNeedsTrimmed2.trim();
-      var slideTen2 = slideTenNeedsTrimmed2.trim();
-      var slideEleven2 = slideElevenNeedsTrimmed2.trim();
-      var slideTwelve2 = slideTwelveNeedsTrimmed2.trim();
-
-
-
-    //SONG THREE!!!!!!!!!!!
-
-    //remove chords
-      var chordsInput3_v2 = chordsInput3.replace(/\b([CDEFGAB](?:b|bb)*(?:#|##|sus|maj|min|aug|m|add)*[\d\/]*(?:[CDEFGAB](?:b|bb)*(?:#|##|sus|maj|min|aug|m|add)*[\d\/]*)*)(?=\s|$)(?!\w)/gm, "");
-    //remove blank lines where chords used to be
-      var chordsInput3_v3 = chordsInput3_v2.replace(/^\s*[\r\n]*/gm, "");
-    //add a marker at the end of the input so the following code can find the last slide
-      var chordsInput3_v4 = chordsInput3_v3 + "[";
-    //find where to split slides
-      var slideOneStart3 = chordsInput3_v4.indexOf("[");
-      var slideTwoStart3 = chordsInput3_v4.indexOf("[", slideOneStart3 + 1);
-      var slideThreeStart3 = chordsInput3_v4.indexOf("[", slideTwoStart3 + 1);
-      var slideFourStart3 = chordsInput3_v4.indexOf("[", slideThreeStart3 + 1);
-      var slideFiveStart3 = chordsInput3_v4.indexOf("[", slideFourStart3 + 1);
-      var slideSixStart3 = chordsInput3_v4.indexOf("[", slideFiveStart3 + 1);
-      var slideSevenStart3 = chordsInput3_v4.indexOf("[", slideSixStart3 + 1);
-      var slideEightStart3 = chordsInput3_v4.indexOf("[", slideSevenStart3 + 1);
-      var slideNineStart3 = chordsInput3_v4.indexOf("[", slideEightStart3 + 1);
-      var slideTenStart3 = chordsInput3_v4.indexOf("[", slideNineStart3 + 1);
-      var slideElevenStart3 = chordsInput3_v4.indexOf("[", slideTenStart3 + 1);
-      var slideTwelveStart3 = chordsInput3_v4.indexOf("[", slideElevenStart3 + 1);
-      var slideThirteenStart3 = chordsInput3_v4.indexOf("[", slideTwelveStart3 + 1);
-    //prevent error where it prints duplicate slides
-       if (slideThreeStart3<0) {
-         slideFourStart3 = -1
-         slideFiveStart3 = -1
-         slideSixStart3 = -1
-         slideSevenStart3 = -1
-         slideEightStart3 = -1
-         slideNineStart3 = -1
-         slideTenStart3 = -1
-         slideElevenStart3 = -1
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideFourStart3<0) {
-         slideFiveStart3 = -1
-         slideSixStart3 = -1
-         slideSevenStart3 = -1
-         slideEightStart3 = -1
-         slideNineStart3 = -1
-         slideTenStart3 = -1
-         slideElevenStart3 = -1
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideFiveStart3<0) {
-         slideSixStart3 = -1
-         slideSevenStart3 = -1
-         slideEightStart3 = -1
-         slideNineStart3 = -1
-         slideTenStart3 = -1
-         slideElevenStart3 = -1
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideSixStart3<0) {
-         slideSevenStart3 = -1
-         slideEightStart3 = -1
-         slideNineStart3 = -1
-         slideTenStart3 = -1
-         slideElevenStart3 = -1
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideSevenStart3<0) {
-         slideEightStart3 = -1
-         slideNineStart3 = -1
-         slideTenStart3 = -1
-         slideElevenStart3 = -1
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideEightStart3<0) {
-         slideNineStart3 = -1
-         slideTenStart3 = -1
-         slideElevenStart3 = -1
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideNineStart3<0) {
-         slideTenStart3 = -1
-         slideElevenStart3 = -1
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideTenStart3<0) {
-         slideElevenStart3 = -1
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideElevenStart3<0) {
-         slideTwelveStart3 = -1
-         slideThirteenStart3 = -1
-       }
-       if (slideTwelveStart3<0) {
-         slideThirteenStart3 = -1
-       }
-
-    //split slides
-      var slideOneIsolated3 = chordsInput3_v4.slice(slideOneStart3, slideTwoStart3);
-      var slideTwoIsolated3 = chordsInput3_v4.slice(slideTwoStart3, slideThreeStart3);
-      var slideThreeIsolated3 = chordsInput3_v4.slice(slideThreeStart3, slideFourStart3);
-      var slideFourIsolated3 = chordsInput3_v4.slice(slideFourStart3, slideFiveStart3);
-      var slideFiveIsolated3 = chordsInput3_v4.slice(slideFiveStart3, slideSixStart3);
-      var slideSixIsolated3 = chordsInput3_v4.slice(slideSixStart3, slideSevenStart3);
-      var slideSevenIsolated3 = chordsInput3_v4.slice(slideSevenStart3, slideEightStart3);
-      var slideEightIsolated3 = chordsInput3_v4.slice(slideEightStart3, slideNineStart3);
-      var slideNineIsolated3 = chordsInput3_v4.slice(slideNineStart3, slideTenStart3);
-      var slideTenIsolated3 = chordsInput3_v4.slice(slideTenStart3, slideElevenStart3);
-      var slideElevenIsolated3 = chordsInput3_v4.slice(slideElevenStart3, slideTwelveStart3);
-      var slideTwelveIsolated3 = chordsInput3_v4.slice(slideTwelveStart3, slideThirteenStart3);
-    //remove verse & chorus headers
-      var slideOneNeedsTrimmed3 = slideOneIsolated3.replace(/\[.*\]/g, "");
-      var slideTwoNeedsTrimmed3 = slideTwoIsolated3.replace(/\[.*\]/g, "");
-      var slideThreeNeedsTrimmed3 = slideThreeIsolated3.replace(/\[.*\]/g, "");
-      var slideFourNeedsTrimmed3 = slideFourIsolated3.replace(/\[.*\]/g, "");
-      var slideFiveNeedsTrimmed3 = slideFiveIsolated3.replace(/\[.*\]/g, "");
-      var slideSixNeedsTrimmed3 = slideSixIsolated3.replace(/\[.*\]/g, "");
-      var slideSevenNeedsTrimmed3 = slideSevenIsolated3.replace(/\[.*\]/g, "");
-      var slideEightNeedsTrimmed3 = slideEightIsolated3.replace(/\[.*\]/g, "");
-      var slideNineNeedsTrimmed3 = slideNineIsolated3.replace(/\[.*\]/g, "");
-      var slideTenNeedsTrimmed3 = slideTenIsolated3.replace(/\[.*\]/g, "");
-      var slideElevenNeedsTrimmed3 = slideElevenIsolated3.replace(/\[.*\]/g, "");
-      var slideTwelveNeedsTrimmed3 = slideTwelveIsolated3.replace(/\[.*\]/g, "");
-    //trim white space
-      var slideOne3 = slideOneNeedsTrimmed3.trim();
-      var slideTwo3 = slideTwoNeedsTrimmed3.trim();
-      var slideThree3 = slideThreeNeedsTrimmed3.trim();
-      var slideFour3 = slideFourNeedsTrimmed3.trim();
-      var slideFive3 = slideFiveNeedsTrimmed3.trim();
-      var slideSix3 = slideSixNeedsTrimmed3.trim();
-      var slideSeven3 = slideSevenNeedsTrimmed3.trim();
-      var slideEight3 = slideEightNeedsTrimmed3.trim();
-      var slideNine3 = slideNineNeedsTrimmed3.trim();
-      var slideTen3 = slideTenNeedsTrimmed3.trim();
-      var slideEleven3 = slideElevenNeedsTrimmed3.trim();
-      var slideTwelve3 = slideTwelveNeedsTrimmed3.trim();
-
 
     //pptx Generator
       var pptx = new PptxGenJS();

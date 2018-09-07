@@ -8,11 +8,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "body-parser": "~1.0.1",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "docx": "^3.6.0",
     "express": "^4.16.3",
     "express-endpoint": "^2.3.4",
+    "longjohn": "^0.2.12",
     "officegen": "^0.4.5",
     "officegen-2": "^0.3.7",
     "pdfkit": "^0.8.3",

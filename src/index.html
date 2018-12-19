@@ -125,13 +125,13 @@
      <div class="col align-self-center">
        <h1 style="color:#00304B">Changing the way you play.<br>
          <h5>Quick Chords eliminates prep time for leading music. <br>
-        Read on to see the magic work!</h5></h1>
+        Type in however many songs you'd like and click a button!</h5></h1>
        </div>
    </div>
  </div>
 
   <!---INSTRUCTIONS-->
-<div class="p-3 mb-2 bg-quick text-white" style="padding-left: 20 px; padding-right: 20 px">
+<!-- <div class="p-3 mb-2 bg-quick text-white" style="padding-left: 20 px; padding-right: 20 px">
   <div class="row">
     <div class="col-sm">
       <div class="card border-0 bg-transparent mb-3" style="width: 50" class="mx-auto">
@@ -162,37 +162,40 @@
     </div>
   </div>
 </div>
-<br>
+<br> -->
   <!---FORMS-->
 <div class="row border-blue bg-transparent mb-3">
   <div class="col-sm">
     <div class="card-body">
       <h1>Song 1</h1>
-	  	<input class="form-control" type="text" id="name1" placeholder="Title"> <br>
-	  	<textarea class="form-control" id="chords1" name="comments" cols="40" rows="10" placeholder="Lyrics & Chords" style= "font-size: 15" ></textarea>
+	  	<input value="Cornerstone" class="form-control" type="text" id="name1" placeholder="Title"> <br>
+      <input value="Hillsongs" class="form-control" type="text" id="artist1" placeholder="Artist"> <br>
+	  	<!-- <textarea class="form-control" id="chords1" name="comments" cols="40" rows="10" placeholder="Lyrics & Chords" style= "font-size: 15" ></textarea> -->
     </div>
   </div>
   <div class="col-sm">
     <div class="card-body">
       <h1>Song 2</h1>
-  		<input class="form-control" type="text" id="name2" placeholder="Title"> <br>
-  		<textarea class="form-control" id="chords2" name="comments" cols="40" rows="10"placeholder="Lyrics & Chords" style="font-size: 15"></textarea>
+  		<input value="Galway Girl" class="form-control" type="text" id="name2" placeholder="Title"> <br>
+      <input value="Ed Sheeran" class="form-control" type="text" id="artist2" placeholder="Artist"> <br>
+  		<!-- <textarea class="form-control" id="chords2" name="comments" cols="40" rows="10"placeholder="Lyrics & Chords" style="font-size: 15"></textarea> -->
     </div>
   </div>
   <div class="col-sm">
     <div class="card-body">
       <h1>Song 3</h1>
-  		<input class="form-control" type="text" id="name3" placeholder="Title"> <br>
-  		<textarea class="form-control" id="chords3" name="comments" cols="40" rows="10" placeholder="Lyrics & Chords" style="font-size: 15"></textarea>
+  		<input value="Shape of you" class="form-control" type="text" id="name3" placeholder="Title"> <br>
+      <input value="Ed Sheeran" class="form-control" type="text" id="artist3" placeholder="Artist"> <br>
+  		<!-- <textarea class="form-control" id="chords3" name="comments" cols="40" rows="10" placeholder="Lyrics & Chords" style="font-size: 15"></textarea> -->
     </div>
-
-    <!-- test -->
+  </div>
+  <div class="col-sm">
     <div class="card-body">
-      <h1>Test</h1>
-      <input class="form-control" type="text" id="scraper" placeholder="scraper"> <br>
+      <h1>Song 4</h1>
+      <input value="perfect" class="form-control" type="text" id="name4" placeholder="Title"> <br>
+      <input value="Ed Sheeran" class="form-control" type="text" id="artist4" placeholder="Artist"> <br>
+      <!-- <textarea class="form-control" id="chords3" name="comments" cols="40" rows="10" placeholder="Lyrics & Chords" style="font-size: 15"></textarea> -->
     </div>
-
-
   </div>
 </div>
 <br>
@@ -201,27 +204,27 @@
 <div class="row" style="margin-left: 20px">
   <div class="col-sm">
     <form>
-      <button type="button" class="btn btn-sample btn-lg" onclick="slides()">Lyric Slideshow</button>
+      <button id="slidesProgress" type="button" class="btn btn-sample btn-lg" onclick="slides()">Lyric Slideshow</button>
     </form>
   </div>
   <div class="col-sm">
     <form>
-      <button type="button" class="btn btn-sample btn-lg" onclick="handout()">Lyric Handout</button>
+      <button id="handoutProgress" type="button" class="btn btn-sample btn-lg" onclick="handout()">Lyric Handout</button>
     </form>
   </div>
   <div class="col-sm col">
     <form>
-      <button type="button" class="btn btn-sample btn-lg" onclick="chords()">Musician Chords</button>
+      <button id="chordsProgress" type="button" class="btn btn-sample btn-lg" onclick="chords()">Musician Chords</button>
     </form>
   </div>
 
     <!-- test -->
 
-    <div class="col-sm col">
+    <!-- <div class="col-sm col">
       <form>
         <button type="button" class="btn btn-sample btn-lg" onclick="scraper()">Scraper</button>
       </form>
-    </div>
+    </div> -->
 
 
   <div class="col-sm-6">

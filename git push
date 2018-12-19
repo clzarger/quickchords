@@ -1,0 +1,65 @@
+[33mcommit 3bd9b6269f30e3aa366a6dbb7fb0678e50f8ab27[m[33m ([m[1;36mHEAD -> [m[1;32msuperCoolFeature[m[33m)[m
+Author: clzarger <clzarger@users.noreply.github.com>
+Date:   Fri Sep 7 15:48:05 2018 -0400
+
+    added multi file download
+
+[33mcommit c151413cb84533e7a974b3d9d933892a2a131e96[m[33m ([m[1;31morigin/superCoolFeature[m[33m)[m
+Author: clzarger <clzarger@users.noreply.github.com>
+Date:   Sat Aug 11 21:40:41 2018 -0400
+
+    added artist search function
+
+[33mcommit 322043199534303adb2effc75f1c7a17cbf6945e[m[33m ([m[1;32mmaster[m[33m)[m
+Author: clzarger <clzarger@users.noreply.github.com>
+Date:   Wed Jul 25 20:46:49 2018 -0400
+
+    test
+
+[33mcommit 1f9f175379272ab1cc9c850e074b25aec1f2c28b[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: clzarger <clzarger@users.noreply.github.com>
+Date:   Wed Jul 25 20:39:42 2018 -0400
+
+    removed console log
+
+[33mcommit fd2944148845b70614a7bb7ceb9371debac5ad40[m
+Author: clzarger <clzarger@users.noreply.github.com>
+Date:   Wed Jul 25 20:33:30 2018 -0400
+
+    A bunch of stuff
+
+[33mcommit e7fbdccd24880f4e6e1fda6376bd0cf83e6c2f31[m
+Author: clzarger <clzarger@users.noreply.github.com>
+Date:   Tue Mar 6 20:32:36 2018 -0500
+
+    interface update
+
+[33mcommit 4b759c6c199287ce1cec357ff3e123e12d99b0cd[m[33m ([m[1;32mfeature/login[m[33m)[m
+Author: clzarger <clzarger@users.noreply.github.com>
+Date:   Sun Jan 14 16:06:45 2018 -0500
+
+    fixed variable name
+
+[33mcommit 948336a7b1b5e95e8de3632aef5b96e13c963939[m
+Author: dippelt <tylor.dippel@espn.com>
+Date:   Sun Jan 14 15:56:54 2018 -0500
+
+    Serve pptxgenjs
+
+[33mcommit 89e6903b25a225a646677eca497704f3b44eeaf0[m
+Author: dippelt <tylor.dippel@espn.com>
+Date:   Sun Jan 14 15:51:17 2018 -0500
+
+    Added missing dependency
+
+[33mcommit 8bf4d1c577ab79982a9001a518f3bc9ad6418e0f[m
+Author: clzarger <34200534+clzarger@users.noreply.github.com>
+Date:   Sun Jan 14 15:03:28 2018 -0500
+
+    Create README.md
+
+[33mcommit ca6376ae27b2bc70ec395389c35872b62860ac5c[m
+Author: clzarger <clzarger@users.noreply.github.com>
+Date:   Sun Jan 14 14:46:41 2018 -0500
+
+    initial commit

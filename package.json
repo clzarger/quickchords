@@ -3,6 +3,9 @@
   "description": "chords",
   "main": "server.js",
   "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
   "engines": {
     "node": ">=7.0.0"
   },

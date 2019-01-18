@@ -54,11 +54,11 @@ module.exports.getSong = async event => {
         const result = await searchPromise();
         return {
             statusCode: 200,
-            // headers: {
-            //   "Access-Control-Allow-Credentials" : true, // Required for cookies, authorization headers with HTTPS
-            //   "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
-            //   "Content-Type": "package/json"
-            // },
+            headers: {
+              // "Access-Control-Allow-Credentials" : true, // Required for cookies, authorization headers with HTTPS
+              "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+              // "Content-Type": "package/json"
+            },
             body: JSON.stringify(result)
         };
     } catch (e) {

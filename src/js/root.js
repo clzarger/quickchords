@@ -6,7 +6,7 @@ const axios = require('axios');
 //Get song data from server
 function getSong(songName, songArtist){
   return axios.get('https://eg5n058gdb.execute-api.us-east-1.amazonaws.com/dev/getSong?name=' + songName + '&artist=' + songArtist)
-    .then(function(response => {
+    .then(response => {
       return response.data.content.text;
     });
 };
